@@ -1,0 +1,76 @@
+name: sandbax-temp-script
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:  
+    - cron: "0 5 * * *"
+        
+
+jobs:
+
+  stage-sa:
+    runs-on: ubuntu:20.04
+    name: sandbox-cluster-opa-audit-report
+    steps:
+      - uses: actions/setup-node@v1
+      - with:
+          "env.environment = "sb""
+          dir("cluster-opa-audit-report/${environment}"){
+                        withEnv(["HOME=${workspace}/cluster-opa-audit-report/${environment}"]) {
+                          generate_cluster_opa_audit_report(environment)
+                        }
+                    }
+                    
+    run: |
+      def generate_cluster_opa_audit_report(environment){
+      env.loggerdata = ""
+      def date = new Date()
+      env.todays_date = date.format("yyyy-MM-dd-HH-mm-ss", TimeZone.getTimeZone('PST'))
+
+      //read yaml config file and set the required parameters for environment
+      def input_info = readYaml file: "./../../cluster-config/config/cluster-config.yaml"
+      def credential_info = input_info.azure.credential."${environment}"
+      def cluster_info = input_info.aks.cluster."${environment}"
+      def cluster_count = cluster_info.size()
+      echo "No of Cluster in ${environment} environment = ${cluster_count}"
+
+      initialize_environment_config(credential_info)
+
+      sh """
+      echo "Azure login..."
+      set +x
+      az login --service-principal --username $client_id --password $client_secret --tenant $tenant_id
+      set -x
+      """
+
+      def binding = [:]
+      for(index=0; index < cluster_count; index++) {
+        binding = [
+            cluster_name:  cluster_info[index].cluster_name,
+            cluster_rg: cluster_info[index].cluster_rg,
+            cluster_subscription: cluster_info[index].cluster_subscription,
+            cluster_type: cluster_info[index].cluster_type,
+            cluster_location: cluster_info[index].cluster_location,
+            cluster_environment:  cluster_info[index].cluster_environment
+        ]
+
+        env.cluster_name =  cluster_info[index].cluster_name
+        env.cluster_rg = cluster_info[index].cluster_rg
+        env.cluster_subscription = cluster_info[index].cluster_subscription
+        env.cluster_location = cluster_info[index].cluster_location
+
+        sh """
+          az account set --subscription $cluster_subscription
+          az aks get-credentials --resource-group ${cluster_rg} --name ${cluster_name} --admin
+        """
+
+        get_opa_audit_details(binding)
+      }
+      sh """
+      az logout
+      """
+      }
+      
