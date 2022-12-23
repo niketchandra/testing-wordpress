@@ -1,0 +1,272 @@
+aks:
+  cluster:
+    sb:
+      -
+        cluster_name	       : esco-akssb-nonprod-westus-cluster-01
+        cluster_rg           : az-entaks-nonprod-01-esco-sb-westus-rg-01
+        cluster_subscription : az-entaks-nonprod-01
+        cluster_type         : sbx
+        cluster_location     : westus
+        cluster_environment  : sandbox
+    np:
+      -
+        cluster_name	       : esco-aksba1-nonprod-eastus-cluster-01
+        cluster_rg           : az-entaks-nonprod-01-esco-dev-eastus-rg-01
+        cluster_subscription : az-entaks-nonprod-01
+        cluster_type         : ba1
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksba1-nonprod-westus-cluster-01
+        cluster_rg           : az-entaks-nonprod-01-esco-dev-westus-rg-01
+        cluster_subscription : az-entaks-nonprod-01
+        cluster_type         : ba1
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksba2-nonprod-eastus-cluster-01
+        cluster_rg           : az-entaks-nonprod-02-esco-nonprod-eastus-rg-01
+        cluster_subscription : az-entaks-nonprod-02
+        cluster_type         : ba2
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksba2-nonprod-westus-cluster-01
+        cluster_rg           : az-entaks-nonprod-02-esco-nonprod-westus-rg-01
+        cluster_subscription : az-entaks-nonprod-02
+        cluster_type         : ba2
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksphi-nonprod-eastus-cluster-01
+        cluster_rg           : az-phiapp-nonprod-01-esco-nonprod-eastus-rg-01
+        cluster_subscription : az-phiapp-nonprod-01
+        cluster_type         : phi
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksphi-nonprod-westus-cluster-01
+        cluster_rg           : az-phiapp-nonprod-01-esco-nonprod-westus-rg-01
+        cluster_subscription : az-phiapp-nonprod-01
+        cluster_type         : phi
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksres-nonprod-eastus-cluster-01
+        cluster_rg           : az-resapp-nonprod-01-esco-nonprod-eastus-rg-01
+        cluster_subscription : az-resapp-nonprod-01
+        cluster_type         : res
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksres-nonprod-westus-cluster-01
+        cluster_rg           : az-resapp-nonprod-01-esco-nonprod-westus-rg-01
+        cluster_subscription : az-resapp-nonprod-01
+        cluster_type         : res
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksshared-nonprod-eastus-cluster-01
+        cluster_rg           : az-core-nonprod-01-esco-nonprod-eastus-rg-01
+        cluster_subscription : az-core-nonprod-01
+        cluster_type         : shared
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-aksshared-nonprod-westus-cluster-01
+        cluster_rg           : az-core-nonprod-01-esco-nonprod-westus-rg-01
+        cluster_subscription : az-core-nonprod-01
+        cluster_type         : shared
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-akstools-nonprod-westus-cluster-01
+        cluster_rg           : az-core-nonprod-01-esco-dev-westus-rg-01
+        cluster_subscription : az-core-nonprod-01
+        cluster_type         : tools
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : espr-aksepme-nonprod-eastus-cluster-01
+        cluster_rg           : az-core-nonprod-01-espr-dev-eastus-rg-01
+        cluster_subscription : az-core-nonprod-01
+        cluster_type         : epme
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : espr-aksepme-dev-westus-cluster-01
+        cluster_rg           : az-core-nonprod-01-espr-dev-westus-rg-01
+        cluster_subscription : az-core-nonprod-01
+        cluster_type         : epme
+        cluster_location     : westus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-akspci-nonprod-eastus-cluster-01
+        cluster_rg           : az-pciapp-nonprod-01-esco-nonprod-eastus-rg-01
+        cluster_subscription : az-pciapp-nonprod-01
+        cluster_type         : pci
+        cluster_location     : eastus
+        cluster_environment  : nonprod
+      -
+        cluster_name	       : esco-akspci-nonprod-westus-cluster-01
+        cluster_rg           : az-pciapp-nonprod-01-esco-nonprod-westus-rg-01
+        cluster_subscription : az-pciapp-nonprod-01
+        cluster_type         : pci
+        cluster_location     : westus
+        cluster_environment  : nonprod
+        
+    pd:
+      -
+        cluster_name	       : esco-aksba-prod-eastus-cluster-01
+        cluster_rg           : az-entaks-prod-01-esco-prod-eastus-rg-01
+        cluster_subscription : az-entaks-prod-01
+        cluster_type         : ba
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksba-prod-westus-cluster-01
+        cluster_rg           : az-entaks-prod-01-esco-prod-westus-rg-01
+        cluster_subscription : az-entaks-prod-01
+        cluster_type         : ba
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksba2-prod-eastus-cluster-01
+        cluster_rg           : az-entaks-prod-02-esco-prod-eastus-rg-01
+        cluster_subscription : az-entaks-prod-02
+        cluster_type         : ba2
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksba2-prod-westus-cluster-01
+        cluster_rg           : az-entaks-prod-02-esco-prod-westus-rg-01
+        cluster_subscription : az-entaks-prod-02
+        cluster_type         : ba2
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksphi-prod-eastus-cluster-01
+        cluster_rg           : az-phiapp-prod-01-esco-prod-eastus-rg-01
+        cluster_subscription : az-phiapp-prod-01
+        cluster_type         : phi
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksphi-prod-westus-cluster-01
+        cluster_rg           : az-phiapp-prod-01-esco-prod-westus-rg-01
+        cluster_subscription : az-phiapp-prod-01
+        cluster_type         : phi
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksres-prod-eastus-cluster-01
+        cluster_rg           : az-resapp-prod-01-esco-prod-eastus-rg-01
+        cluster_subscription : az-resapp-prod-01
+        cluster_type         : res
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksres-prod-westus-cluster-01
+        cluster_rg           : az-resapp-prod-01-esco-prod-westus-rg-01
+        cluster_subscription : az-resapp-prod-01
+        cluster_type         : res
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksshared-prod-eastus-cluster-01
+        cluster_rg           : az-core-prod-01-esco-prod-eastus-rg-06
+        cluster_subscription : az-core-prod-01
+        cluster_type         : shared
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-aksshared-prod-westus-cluster-01
+        cluster_rg           : az-core-prod-01-esco-prod-westus-rg-05
+        cluster_subscription : az-core-prod-01
+        cluster_type         : shared
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-akstools-prod-eastus-cluster-01
+        cluster_rg           : az-core-prod-01-esco-prod-eastus-rg-01
+        cluster_subscription : az-core-prod-01
+        cluster_type         : tools
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-akstools-prod-westus-cluster-01
+        cluster_rg           : az-core-prod-01-esco-prod-westus-rg-01
+        cluster_subscription : az-core-prod-01
+        cluster_type         : tools
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : espr-aksepme-prod-eastus-cluster-01
+        cluster_rg           : az-core-prod-01-espr-prod-eastus-rg-01
+        cluster_subscription : az-core-prod-01
+        cluster_type         : epme
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : espr-aksepme-prod-westus-cluster-01
+        cluster_rg           : az-core-prod-01-espr-prod-westus-rg-01
+        cluster_subscription : az-core-prod-01
+        cluster_type         : epme
+        cluster_location     : westus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-akspci-prod-eastus-cluster-01
+        cluster_rg           : az-pciapp-prod-01-esco-prod-eastus-rg-01
+        cluster_subscription : az-pciapp-prod-01
+        cluster_type         : pci
+        cluster_location     : eastus
+        cluster_environment  : prod
+      -
+        cluster_name	       : esco-akspci-prod-westus-cluster-01
+        cluster_rg           : az-pciapp-prod-01-esco-prod-westus-rg-01
+        cluster_subscription : az-pciapp-prod-01
+        cluster_type         : pci
+        cluster_location     : westus
+        cluster_environment  : prod
+azure:
+  credential:
+    sb:
+      azure_cred_id              : esco-az-sandbox-sp
+      azure_log_cred_id          : esco-aks-log-report-user
+      azure_storage_cred_id      : esco-aks-storage-report-user
+      acr_id                     : none
+      acr_cred_id                : none
+      acr_environment            : sandbox
+      acr_subscription           : none
+    np:
+      azure_cred_id              : esco-az-nonprod-sp
+      azure_log_cred_id          : esco-aks-log-report-user
+      azure_storage_cred_id      : esco-aks-storage-report-user
+      acr_id                     : escoacrwestus
+      acr_cred_id                : none
+      acr_environment            : nonprod
+      acr_subscription           : az-entaks-nonprod-01
+    pd:
+      azure_cred_id              : esco-az-prod-sp
+      azure_log_cred_id          : esco-aks-log-report-user
+      azure_storage_cred_id      : esco-aks-storage-report-user
+      acr_id                     : escoacrprod01
+      acr_cred_id                : none
+      acr_environment            : prod
+      acr_subscription           : az-core-prod-01
+  acr:
+    sb:
+      acr_id                     : none
+      acr_cred_id                : none
+      acr_environment            : sandbox
+      acr_subscription           : none
+    np:
+      acr_id                     : escoacrwestus
+      acr_cred_id                : none
+      acr_environment            : nonprod
+      acr_subscription           : az-entaks-nonprod-01
+    pd:
+      acr_id                     : escoacrprod01
+      acr_cred_id                : none
+      acr_environment            : prod
+      acr_subscription           : az-core-prod-01
