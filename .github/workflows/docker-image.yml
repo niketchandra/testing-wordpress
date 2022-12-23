@@ -21,21 +21,24 @@ on:
     
     
 
+    
+    
+
 jobs:
   azure-login:
     runs-on: [ Linux ]
     steps:
       - name: Azure Login
         continue-on-error: true
-        run: |
-          az login --service-principal -u ${{ secrets.AZ_ESCO_CLIENT_ID }} -p ${{ secrets.AZ_ESCO_CLIENT_SECRET }} -t ${{ secrets.AZ_ESCO_TENANT_ID }}
-          az account set --subscription ${{ github.event.inputs.SubscriptionID }}
+#        run: |
+#          az login --service-principal -u ${{ secrets.AZ_ESCO_CLIENT_ID }} -p ${{ secrets.AZ_ESCO_CLIENT_SECRET }} -t ${{ secrets.AZ_ESCO_TENANT_ID }}
+#          az account set --subscription ${{ github.event.inputs.SubscriptionID }}
 
-      - name: copy script
-        uses: actions/checkout@master
-        with: 
-          source: docker-baseimage/ubuntu/opa_audit/cluster-config.yaml
-          target: /tmp/cluster-config.yaml
+#      - name: copy script
+#        uses: actions/checkout@master
+#        with: 
+#          source: docker-baseimage/ubuntu/opa_audit/cluster-config.yaml
+#          target: /tmp/cluster-config.yaml
 
       - name: run script
         run: |
@@ -48,18 +51,18 @@ jobs:
 
             echo "${{ secrets.AZ_ESCO_CLIENT_ID }}"
 
-            cluster_count=`grep -c 'cluster_rg'  ../../cluster-config.yaml/cluster-config.yaml`
+            cluster_count=`grep -c 'cluster_rg'  docker-baseimage/ubuntu/opa_audit/cluster-config.yaml`
             echo "cluster count" $cluster_count
 
-            cluster_rg=`grep -o 'cluster_rg.*'  ../../cluster-config.yamlcluster-config.yaml | cut -f2- -d:`
+            cluster_rg=`grep -o 'cluster_rg.*'  docker-baseimage/ubuntu/opa_audit/cluster-config.yaml | cut -f2- -d:`
             #echo $cluster_rg[]
             declare -a rg=($cluster_rg)
 
 
-            cluster_name=`grep -o 'cluster_name.*'  ../../cluster-config.yamlcluster-config.yaml | cut -f2- -d:`
+            cluster_name=`grep -o 'cluster_name.*'  docker-baseimage/ubuntu/opa_audit/cluster-config.yaml | cut -f2- -d:`
             #echo $cluster_name[]
 
-            subscription=`grep -o 'cluster_subscription.*'  ../../cluster-config.yaml | cut -f2- -d:`
+            subscription=`grep -o 'cluster_subscription.*'  docker-baseimage/ubuntu/opa_audit/cluster-config.yaml | cut -f2- -d:`
             #echo $subscription[]
 
 
@@ -73,18 +76,18 @@ jobs:
             for(( index=0; index < $cluster_count; index++ ))
             do
                 echo "${index}" "${name[$index]}" "-->" "${rg[$index]} subscription "${sub[$index]}"
-                az account set --subscription "${sub[$index]}"
-                az aks get-credentials --resource-group ${rg[$index]} --name ${name[$index]} --admin
+#                az account set --subscription "${sub[$index]}"
+#                az aks get-credentials --resource-group ${rg[$index]} --name ${name[$index]} --admin
 
-                az logout
-            OPA_CONSTRAINT_JSON_LIST= `kubectl get ConstraintTemplate -o json && true, returnStdout:true`
-            if [ $OPA_CONSTRAINT_JSON_LIST == "" && $OPA_CONSTRAINT_JSON_LIST == null ]
-            then
-                    echo "OPA gatekeeper is not deployed or there are No ConstraintTemplate deployed in cluster ${name[$index]}"
-                
-                else
-                  echo "commands need to run regarding kubectl"
-            fi
+#                az logout
+#            OPA_CONSTRAINT_JSON_LIST= `kubectl get ConstraintTemplate -o json && true, returnStdout:true`
+#            if [ $OPA_CONSTRAINT_JSON_LIST == "" && $OPA_CONSTRAINT_JSON_LIST == null ]
+#            then
+#                    echo "OPA gatekeeper is not deployed or there are No ConstraintTemplate deployed in cluster ${name[$index]}"
+#                
+#                else
+#                  echo "commands need to run regarding kubectl"
+#            fi
             done
 
         env: 
