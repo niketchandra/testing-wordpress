@@ -28,18 +28,6 @@ jobs:
   azure-login:
     runs-on: [ Linux ]
     steps:
-      - name: Azure Login
-        continue-on-error: true
-#        run: |
-#          az login --service-principal -u ${{ secrets.AZ_ESCO_CLIENT_ID }} -p ${{ secrets.AZ_ESCO_CLIENT_SECRET }} -t ${{ secrets.AZ_ESCO_TENANT_ID }}
-#          az account set --subscription ${{ github.event.inputs.SubscriptionID }}
-
-#      - name: copy script
-#        uses: actions/checkout@master
-#        with: 
-#          source: docker-baseimage/ubuntu/opa_audit/cluster-config.yaml
-#          target: /tmp/cluster-config.yaml
-
       - name: run script
         run: |
             CURRENTDATE=`date +"%Y-%m-%d %T"`
